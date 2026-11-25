@@ -1,0 +1,112 @@
+/* ============================================================
+   EKOLSTAT — Page de connexion (charte ScolaOne)
+   Panneau de marque marine + carte de formulaire sur fond clair.
+   Dépend de theme.css
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.hidden { display: none !important; }
+
+html, body { min-height: 100%; }
+body { color: var(--ink); background: #f8fafc; line-height: 1.55; }
+a { color: inherit; text-decoration: none; }
+
+.auth-shell { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 100vh; min-height: 100dvh; }
+
+/* ── Panneau de marque (gauche) ── */
+.auth-brand {
+  position: relative; overflow: hidden; isolation: isolate; color: #fff;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
+  padding: clamp(28px, 4vw, 64px);
+  background:
+    radial-gradient(110% 80% at 85% 8%, rgba(75, 137, 224, .38) 0%, rgba(75, 137, 224, 0) 60%),
+    radial-gradient(90% 70% at 8% 96%, rgba(248, 125, 0, .22) 0%, rgba(248, 125, 0, 0) 55%),
+    linear-gradient(160deg, #0b2a55 0%, #0e3d80 45%, #1762cb 100%);
+}
+.auth-brand::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: .45; pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(110% 90% at 50% 40%, #000 0%, rgba(0, 0, 0, .4) 55%, transparent 85%);
+          mask-image: radial-gradient(110% 90% at 50% 40%, #000 0%, rgba(0, 0, 0, .4) 55%, transparent 85%);
+}
+.auth-brand .flagline { display: none; }
+
+.brand-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand-lockup { display: flex; align-items: center; gap: 14px; }
+.brand-lockup .tile { width: 56px; height: 56px; padding: 6px; background: #fff; border-radius: 16px; box-shadow: 0 10px 24px rgba(4, 19, 40, .3); display: grid; place-items: center; }
+.brand-lockup .tile img { width: 100%; height: 100%; object-fit: contain; }
+.brand-lockup strong { display: block; font-size: 26px; font-weight: 900; letter-spacing: -.01em; line-height: 1; }
+.brand-lockup strong b { color: var(--orange-light); font-weight: 900; }
+.brand-lockup strong + span { display: block; margin-top: 6px; font-size: 11px; font-style: italic; color: rgba(255, 255, 255, .72); }
+
+.back-home { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 10px; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .25); color: rgba(255, 255, 255, .9); font-size: 12.5px; font-weight: 700; transition: .2s; }
+.back-home:hover { color: #fff; background: rgba(255, 255, 255, .16); transform: translateX(-2px); }
+
+.brand-pitch { max-width: 460px; }
+.brand-pitch .badge-pill { display: none; }
+.brand-pitch h2 { font-size: clamp(30px, 3.4vw, 42px); font-weight: 900; line-height: 1.12; letter-spacing: -.03em; margin: 0 0 18px; }
+.brand-pitch h2 em { font-style: normal; color: var(--orange-light); }
+.brand-pitch p { color: rgba(255, 255, 255, .78); font-size: 15px; line-height: 1.65; max-width: 46ch; }
+.pitch-list { list-style: none; display: grid; gap: 12px; margin-top: 30px; }
+.pitch-list li { display: flex; gap: .85rem; align-items: flex-start; border-radius: 14px; padding: .9rem 1rem; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .12); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.pitch-list i { flex: 0 0 36px; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; color: #fff; font-size: .85rem; background: var(--grad-orange); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3); }
+.pitch-list b { display: block; font-size: 14px; font-weight: 800; }
+.pitch-list small { display: block; margin-top: 2px; font-size: 12px; color: rgba(255, 255, 255, .68); line-height: 1.45; }
+.brand-foot { font-size: 12px; color: rgba(255, 255, 255, .5); }
+
+/* ── Panneau formulaire (droite) ── */
+.auth-panel { display: flex; align-items: center; justify-content: center; padding: clamp(24px, 4vw, 56px); background: #f8fafc; }
+.auth-card { width: 100%; max-width: 448px; background: #fff; border: 1px solid #f1f5f9; border-radius: 16px; padding: clamp(24px, 3vw, 36px); box-shadow: 0 25px 50px -12px rgba(148, 163, 184, .35); animation: cardIn .7s var(--ease) both; }
+@keyframes cardIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+.auth-logo { display: none; align-items: center; gap: 12px; margin-bottom: 26px; }
+.auth-logo img { height: 48px; width: auto; }
+.auth-logo strong { display: block; font-size: 22px; font-weight: 900; line-height: 1.1; color: var(--navy); }
+.auth-logo span { display: block; font-size: 11px; font-style: italic; color: var(--ink-soft); }
+
+.auth-card h1 { font-size: 1.6rem; font-weight: 900; letter-spacing: -.02em; line-height: 1.15; color: var(--navy); }
+.auth-card h1::after { content: ''; display: block; margin-top: 16px; height: 4px; width: 56px; border-radius: 999px; background: linear-gradient(90deg, #1762cb 0%, #f87d00 100%); }
+.auth-card .lead { margin: 14px 0 26px; font-size: .875rem; color: #64748b; }
+
+.field { margin-bottom: 18px; }
+.field label { display: block; font-size: .875rem; font-weight: 700; color: #334155; margin-bottom: 6px; }
+.input-wrap { position: relative; }
+.input-wrap > i.lead-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #9aa8bd; font-size: .85rem; pointer-events: none; transition: color .2s; }
+.field input[type="email"], .field input[type="password"], .field input[type="text"] {
+  width: 100%; padding: .75rem 2.8rem .75rem 2.7rem; background: #fff; border: 1.5px solid #dbe4ef;
+  border-radius: 10px; color: var(--ink); font-size: .9375rem; font-weight: 500; outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.field input::placeholder { color: #9aa8bd; font-weight: 400; }
+.field input:hover { border-color: var(--sky-300); }
+.field input:focus { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(23, 98, 203, .12); }
+.input-wrap:focus-within > i.lead-icon { color: var(--blue); }
+.eye-btn { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 9px; background: none; border: none; cursor: pointer; color: #94a3b8; transition: color .2s, background .2s; }
+.eye-btn:hover { color: #475569; background: #f1f5f9; }
+
+.row-between { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 2px 0 18px; }
+.checkbox { display: inline-flex; align-items: center; gap: 9px; cursor: pointer; font-size: 12.5px; font-weight: 500; color: #475569; user-select: none; }
+.checkbox input { width: 16px; height: 16px; accent-color: var(--blue); cursor: pointer; }
+.link-forgot { background: none; border: none; cursor: pointer; font-size: 12.5px; font-weight: 700; color: var(--blue); transition: color .2s; }
+.link-forgot:hover { color: var(--sky-700); text-decoration: underline; }
+
+.btn-login { width: 100%; padding: .85rem 1.25rem; font-size: 1rem; border-radius: 10px; }
+.btn-login .btn-loader { display: inline-flex; }
+
+.info-note { display: flex; gap: 12px; align-items: flex-start; margin-top: 22px; padding-top: 20px; border-top: 1px solid #f1f5f9; font-size: 12px; color: #94a3b8; line-height: 1.55; }
+.info-note i { color: var(--orange); margin-top: 3px; }
+.info-note:target { color: var(--sky-700); }
+
+.auth-legal { margin-top: 18px; text-align: center; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #94a3b8; }
+
+/* ── Responsive ── */
+@media (max-width: 920px) {
+  .auth-shell { grid-template-columns: 1fr; }
+  .auth-brand { display: none; }
+  .auth-panel { align-items: flex-start; padding-top: 32px; }
+  .auth-logo { display: flex; }
+}
+@media (max-width: 420px) {
+  .auth-card h1 { font-size: 1.4rem; }
+  .row-between { flex-wrap: wrap; }
+}

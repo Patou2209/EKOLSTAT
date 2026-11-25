@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>EKOLSTAT — Statistiques scolaires · Ministère de l'Éducation Nationale et Nouvelle Citoyenneté</title>
+  <meta name="description" content="EKOLSTAT, la plateforme de statistiques scolaires de la République Démocratique du Congo : bulletins, effectifs par cycle et rapports officiels, de l'école à l'Inspection Générale." />
+  <meta name="theme-color" content="#1762CB" />
+  <link rel="icon" href="img/logo-96.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="img/hero-eleve.webp" type="image/webp" fetchpriority="high" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="static/theme.css" />
+  <link rel="stylesheet" href="static/site.css" />
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <header class="header" id="header">
+    <div class="wrap">
+      <a href="#accueil" class="brand" aria-label="EKOLSTAT — Accueil">
+        <picture>
+          <source srcset="img/logo-192.webp" type="image/webp" />
+          <img src="img/logo-96.png" alt="Armoiries du Ministère de l'Éducation Nationale" width="46" height="48" />
+        </picture>
+        <span class="brand-text"><strong>EKOL<b>STAT</b></strong><span>Statistiques scolaires</span></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a class="link" href="#accueil">Accueil</a>
+        <a class="link" href="#apropos">À propos</a>
+        <a class="link" href="#fonctionnalites">Fonctionnalités</a>
+        <a class="link" href="#hierarchie">Organisation</a>
+        <a class="btn btn-orange" href="login.html"><i class="fas fa-right-to-bracket"></i> Se connecter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <!-- ═════════ HERO ═════════ -->
+    <section class="hero" id="accueil">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="badge-pill"><i class="fas fa-chart-column"></i> Statistiques scolaires nationales</span>
+          <h1>Piloter l'éducation par des <em>données fiables</em></h1>
+          <p class="lead">EKOLSTAT centralise les statistiques et les rapports officiels, de l'école jusqu'à l'Inspection Générale, en temps réel et en toute sécurité.</p>
+          <div class="hero-cta">
+            <a class="btn btn-orange" href="login.html"><i class="fas fa-right-to-bracket"></i> Accéder à mon espace</a>
+            <a class="btn btn-line" href="#fonctionnalites">Découvrir la plateforme <i class="fas fa-arrow-down"></i></a>
+          </div>
+          <div class="hero-note"><i class="fas fa-circle-info"></i> Les identifiants sont attribués par votre niveau hiérarchique supérieur.</div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-photo">
+            <picture>
+              <source srcset="img/hero-eleve.webp" type="image/webp" />
+              <img src="img/hero-eleve.jpg" alt="Élève congolaise en uniforme, en train d'écrire dans sa salle de classe" width="1200" height="896" fetchpriority="high" decoding="async" />
+            </picture>
+          </div>
+          <div class="float-card fc-1">
+            <div class="ic"><i class="fas fa-chart-line"></i></div>
+            <div><strong>Données en temps réel</strong><span>Mises à jour instantanées</span></div>
+          </div>
+          <div class="float-card fc-2">
+            <div class="ic"><i class="fas fa-file-pdf"></i></div>
+            <div><strong>Rapports officiels</strong><span>PDF prêts à signer</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ CHIFFRES ═════════ -->
+    <div class="stats">
+      <div class="wrap">
+        <div class="stats-card reveal">
+          <div class="stat"><div class="num">4</div><div class="lbl">niveaux d'administration connectés</div></div>
+          <div class="stat"><div class="num">5</div><div class="lbl">cycles d'enseignement suivis</div></div>
+          <div class="stat"><div class="num">24/7</div><div class="lbl">accès en ligne, sur tout appareil</div></div>
+          <div class="stat"><div class="num">PDF</div><div class="lbl">rapports officiels en un clic</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═════════ À PROPOS ═════════ -->
+    <section class="section" id="apropos">
+      <div class="wrap about-grid">
+        <div class="reveal">
+          <span class="eyebrow">À propos</span>
+          <h2>Une plateforme nationale, pensée pour le terrain</h2>
+          <p class="sub">EKOLSTAT remplace les tableaux dispersés par une source unique et fiable, alimentée à la base par les inspecteurs itinérants et consolidée automatiquement à chaque niveau.</p>
+          <ul class="checks">
+            <li><i class="fas fa-check"></i><span><b>Une seule saisie.</b> L'inspecteur itinérant renseigne l'école, ses classes et ses effectifs sur le terrain, tout remonte seul.</span></li>
+            <li><i class="fas fa-check"></i><span><b>Des totaux toujours à jour.</b> Pool, IPP et IGE voient la même vérité.</span></li>
+            <li><i class="fas fa-check"></i><span><b>Des rapports officiels.</b> En-tête du Ministère, numéro de série, signature et cachet.</span></li>
+          </ul>
+        </div>
+        <div class="reveal d1">
+          <div class="seal-card">
+            <picture>
+              <source srcset="img/logo-192.webp" type="image/webp" />
+              <img src="img/logo-192.png" alt="Armoiries du Ministère" loading="lazy" width="160" height="166" />
+            </picture>
+            <h3>Ministère de l'Éducation Nationale et Nouvelle Citoyenneté</h3>
+            <p>République Démocratique du Congo</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ FONCTIONNALITÉS ═════════ -->
+    <section class="section soft" id="fonctionnalites">
+      <div class="wrap">
+        <div class="head-center reveal">
+          <span class="eyebrow">Fonctionnalités</span>
+          <h2>Tout ce qu'il faut pour piloter vos statistiques</h2>
+          <p class="sub">Des outils simples, conçus pour les équipes de terrain comme pour les décideurs.</p>
+        </div>
+        <div class="features">
+          <article class="card reveal d1"><div class="ic"><i class="fas fa-chart-line"></i></div><h3>Statistiques en temps réel</h3><p>Tableaux de bord actualisés en continu, avec les totaux consolidés de chaque niveau.</p></article>
+          <article class="card reveal d2"><div class="ic"><i class="fas fa-file-pdf"></i></div><h3>Rapports PDF officiels</h3><p>Rapports avec en-tête du Ministère, numéro de série et espace de signature et de cachet.</p></article>
+          <article class="card reveal"><div class="ic"><i class="fas fa-file-excel"></i></div><h3>Import Excel en masse</h3><p>Créez en une fois vos Pools ou vos inspecteurs itinérants à partir d'une simple liste Excel.</p></article>
+          <article class="card reveal d1"><div class="ic"><i class="fas fa-user-shield"></i></div><h3>Accès par rôle</h3><p>IGE, IPP, Pool, Inspecteur itinérant : chacun ne voit que ce qui relève de son périmètre.</p></article>
+          <article class="card reveal d2"><div class="ic"><i class="fas fa-layer-group"></i></div><h3>Tous les cycles</h3><p>Maternelle, primaire, CTEB, cycle long et cycle court, avec les options et leurs codes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ ORGANISATION ═════════ -->
+    <section class="section navy" id="hierarchie">
+      <div class="wrap">
+        <div class="head-center reveal">
+          <span class="eyebrow">Organisation</span>
+          <h2>Quatre niveaux, une même chaîne d'information</h2>
+          <p class="sub">Chaque niveau crée et supervise le niveau qui lui est directement rattaché.</p>
+        </div>
+
+        <div class="flow">
+          <div class="step reveal"><div class="node"><i class="fas fa-landmark"></i></div><div><span class="lvl">Niveau 1</span><h3>IGE</h3><p>L'Inspection Générale supervise l'ensemble du système et crée les comptes IPP.</p></div></div>
+          <div class="step reveal d1"><div class="node"><i class="fas fa-building-columns"></i></div><div><span class="lvl">Niveau 2</span><h3>IPP</h3><p>L'Inspection Principale Provinciale crée et supervise les Pools de sa province.</p></div></div>
+          <div class="step reveal d2"><div class="node"><i class="fas fa-sitemap"></i></div><div><span class="lvl">Niveau 3</span><h3>Pool</h3><p>Il crée les comptes des inspecteurs itinérants, au besoin par import Excel, et suit les écoles qu'ils collectent.</p></div></div>
+          <div class="step reveal d3"><div class="node"><i class="fas fa-person-walking"></i></div><div><span class="lvl">Niveau 4</span><h3>Inspecteur itinérant</h3><p>Sur le terrain, il crée les écoles, leurs classes et relève les effectifs.</p></div></div>
+        </div>
+
+        <div class="cycles reveal" aria-label="Cycles d'enseignement couverts">
+          <span class="chip"><i class="fas fa-child"></i> Maternelle</span>
+          <span class="chip"><i class="fas fa-book-open"></i> Primaire</span>
+          <span class="chip"><i class="fas fa-pencil"></i> CTEB</span>
+          <span class="chip"><i class="fas fa-graduation-cap"></i> Cycle long</span>
+          <span class="chip"><i class="fas fa-screwdriver-wrench"></i> Cycle court</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═════════ APPEL À L'ACTION ═════════ -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="cta-box reveal">
+          <picture>
+            <source srcset="img/logo-96.webp" type="image/webp" />
+            <img src="img/logo-96.png" alt="" loading="lazy" width="74" height="77" />
+          </picture>
+          <h2 id="cta-title">Accédez à votre espace de travail</h2>
+          <p>Connectez-vous avec les identifiants fournis par votre hiérarchie pour consulter vos statistiques et générer vos rapports.</p>
+          <a class="btn btn-orange" href="login.html"><i class="fas fa-right-to-bracket"></i> Se connecter</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <picture>
+            <source srcset="img/logo-96.webp" type="image/webp" />
+            <img src="img/logo-96.png" alt="Armoiries du Ministère" loading="lazy" width="58" height="60" />
+          </picture>
+          <div>
+            <strong>République Démocratique du Congo</strong>
+            <p>Ministère de l'Éducation Nationale et Nouvelle Citoyenneté. EKOLSTAT, la plateforme de statistiques scolaires.</p>
+          </div>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+            <li><a href="#hierarchie">Organisation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Accès</h4>
+          <ul>
+            <li><a href="login.html">Se connecter</a></li>
+            <li><a href="login.html#identifiants">Identifiants oubliés ?</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="year">2026</span> EKOLSTAT. Tous droits réservés.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+
+      var header = document.getElementById('header');
+      var toggle = document.getElementById('navToggle');
+      var nav = document.getElementById('nav');
+      var yr = document.getElementById('year');
+      if (yr) yr.textContent = new Date().getFullYear();
+
+      function onScroll() { header.classList.toggle('scrolled', window.scrollY > 8); }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      function setMenu(open) {
+        nav.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+        toggle.querySelector('i').className = open ? 'fas fa-xmark' : 'fas fa-bars';
+      }
+      toggle.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+      nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+      window.addEventListener('resize', function () { if (window.innerWidth > 1020) setMenu(false); });
+
+      var items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        items.forEach(function (el) { io.observe(el); });
+      } else {
+        items.forEach(function (el) { el.classList.add('in'); });
+      }
+    })();
+  </script>
+</body>
+</html>

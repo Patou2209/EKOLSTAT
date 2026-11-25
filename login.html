@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Connexion — EKOLSTAT</title>
+  <meta name="theme-color" content="#1762CB" />
+  <link rel="icon" href="img/logo-96.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="static/theme.css" />
+  <link rel="stylesheet" href="static/auth.css" />
+</head>
+<body>
+<div class="auth-shell">
+
+  <!-- ── Panneau de marque ── -->
+  <aside class="auth-brand">
+    <div class="brand-top">
+      <div class="brand-lockup">
+        <span class="tile"><img src="img/logo-96.png" alt="Armoiries du Ministère" width="44" height="46" /></span>
+        <span><strong>EKOL<b>STAT</b></strong><span>Statistiques scolaires nationales</span></span>
+      </div>
+      <a href="index.html" class="back-home" aria-label="Retour à l'accueil"><i class="fas fa-arrow-left"></i> Accueil</a>
+    </div>
+
+    <div class="brand-pitch">
+      <h2>Toute l'éducation,<br /><em>des données fiables.</em></h2>
+      <p>Connectez-vous à votre espace pour suivre vos effectifs et produire vos rapports officiels, de l'école à l'Inspection Générale.</p>
+      <ul class="pitch-list">
+        <li><i class="fas fa-bolt"></i><span><b>Statistiques en temps réel</b><small>Une seule saisie, des totaux consolidés à chaque niveau.</small></span></li>
+        <li><i class="fas fa-file-pdf"></i><span><b>Rapports PDF officiels</b><small>En-tête du Ministère, numéro de série, signature et cachet.</small></span></li>
+        <li><i class="fas fa-user-shield"></i><span><b>Accès sécurisé selon votre rôle</b><small>Chacun voit exactement son périmètre, et rien de plus.</small></span></li>
+      </ul>
+    </div>
+
+    <div class="brand-foot">République Démocratique du Congo · Ministère de l'Éducation Nationale et Nouvelle Citoyenneté</div>
+  </aside>
+
+  <!-- ── Formulaire ── -->
+  <main class="auth-panel">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <picture>
+          <source srcset="img/logo-192.webp" type="image/webp" />
+          <img src="img/logo-96.png" alt="Armoiries du Ministère" width="50" height="52" />
+        </picture>
+        <div><strong>EKOL<b style="color:#F87D00">STAT</b></strong><span>Statistiques scolaires</span></div>
+      </div>
+
+      <h1>Connectez-vous</h1>
+      <p class="lead">Accédez à votre espace professionnel en toute sécurité.</p>
+
+      <form id="login-form" autocomplete="on" novalidate>
+        <div class="field">
+          <label for="email">Adresse e-mail</label>
+          <div class="input-wrap">
+            <i class="fas fa-envelope lead-icon"></i>
+            <input type="email" id="email" name="email" placeholder="vous@exemple.cd" autocomplete="username" inputmode="email" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="password">Mot de passe</label>
+          <div class="input-wrap">
+            <i class="fas fa-lock lead-icon"></i>
+            <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe" autocomplete="current-password" />
+            <button class="eye-btn" id="toggle-pass" type="button" aria-label="Afficher ou masquer le mot de passe"><i class="fas fa-eye"></i></button>
+          </div>
+        </div>
+
+        <div class="row-between">
+          <label class="checkbox"><input type="checkbox" id="remember" /> Se souvenir de moi</label>
+          <button type="button" class="link-forgot" id="forgot-info">Mot de passe oublié ?</button>
+        </div>
+
+        <div id="auth-message" class="auth-message hidden" role="alert"></div>
+
+        <button class="btn btn-primary btn-login" type="submit" id="login-btn">
+          <span class="btn-label">Se connecter</span>
+          <span class="btn-loader hidden"><i class="fas fa-spinner fa-spin"></i></span>
+        </button>
+      </form>
+
+      <div class="info-note" id="identifiants">
+        <i class="fas fa-circle-info"></i>
+        <span>Les identifiants sont attribués par votre niveau hiérarchique supérieur. En cas de perte, contactez votre hiérarchie directe.</span>
+      </div>
+
+      <p class="auth-legal">Technoweb Corporation</p>
+    </div>
+  </main>
+</div>
+
+<script>
+  // « Mot de passe oublié » : les comptes sont gérés par la hiérarchie.
+  document.getElementById('forgot-info').addEventListener('click', function () {
+    var box = document.getElementById('auth-message');
+    box.className = 'auth-message info';
+    box.innerHTML = '<i class="fas fa-circle-info"></i><span>En cas de perte de vos identifiants, veuillez contacter votre hiérarchie directe pour qu\u2019elle vous en fournisse d\u2019autres.</span>';
+  });
+</script>
+
+<!-- Firebase (compat) — defer : n'empêche plus l'affichage de la page -->
+<script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script defer src="static/firebase-config.js"></script>
+<script defer src="static/login.js"></script>
+</body>
+</html>

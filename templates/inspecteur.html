@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EKOLSTAT — Espace Inspecteur itinérant</title>
+  <meta name="theme-color" content="#1762CB" />
+  <link rel="icon" href="../img/logo-96.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="../static/theme.css" rel="stylesheet" />
+  <link href="../static/style.css" rel="stylesheet" />
+</head>
+<body class="app-body is-loading" data-role="INSPECTEUR">
+  <div class="app-shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <div class="logos-container">
+          <!--<img src="../img/ekolstat backless.png" alt="EKOLSTAT" class="sidebar-logo">
+          <div class="logo-separator"></div> -->
+          <img src="../img/logo-96.webp" alt="Ministère" class="sidebar-logo" width="40" height="42">
+          <div class="sidebar-brand"><strong>EKOL<b>STAT</b></strong><span>Statistiques scolaires</span></div>
+        </div>
+        <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Réduire/Étendre la barre latérale"><i class="fas fa-bars"></i></button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="nav-section">Navigation</span>
+        <a href="#" class="nav-link active" data-view="overview" data-tooltip="Vue d'ensemble"><i class="fas fa-gauge-high"></i><span>Vue d'ensemble</span></a>
+        <a href="#" class="nav-link" data-view="form" id="nav-new-ecole" data-tooltip="Nouvelle école"><i class="fas fa-circle-plus"></i><span>Nouvelle école</span></a>
+        <a href="#" class="nav-link" data-view="ecoles" data-tooltip="Mes écoles"><i class="fas fa-school"></i><span>Mes écoles</span></a>
+        <a href="#" class="nav-link" data-view="reports" data-tooltip="Rapports"><i class="fas fa-file-lines"></i><span>Rapports</span></a>
+        <span class="nav-section">Compte</span>
+        <a href="#" class="nav-link" id="logout-link" data-tooltip="Déconnexion"><i class="fas fa-right-from-bracket"></i><span>Déconnexion</span></a>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="app-main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <!-- Bouton hamburger visible sur tous les écrans -->
+          <button class="icon-btn hamburger-btn" id="hamburger-btn" aria-label="Ouvrir le menu" type="button">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="user-menu">
+            <div class="user-avatar"><i class="fas fa-person-walking"></i></div>
+            <div class="user-info">
+              <span class="user-name" id="user-name">Inspecteur</span>
+              <span class="user-role" id="user-role">Inspecteur itinérant</span>
+            </div>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="search-box">
+            <i class="fas fa-magnifying-glass"></i>
+            <input type="text" id="global-search" placeholder="Rechercher une école..." />
+          </div>
+          <button class="icon-btn" id="refresh-btn" aria-label="Rafraîchir"><i class="fas fa-rotate"></i></button>
+          
+        </div>
+      </header>
+
+      <main class="content">
+        <!-- VIEW: OVERVIEW -->
+        <section class="view active" id="view-overview">
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-blue"><i class="fas fa-school"></i></div>
+              <div class="kpi-body"><span class="kpi-label">Écoles</span><span class="kpi-value" id="total-ecoles">0</span></div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-green"><i class="fas fa-chalkboard"></i></div>
+              <div class="kpi-body"><span class="kpi-label">Classes</span><span class="kpi-value" id="total-classes">0</span></div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-amber"><i class="fas fa-users"></i></div>
+              <div class="kpi-body"><span class="kpi-label">Total élèves</span><span class="kpi-value" id="total-eleves">0</span></div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-pink"><i class="fas fa-venus"></i></div>
+              <div class="kpi-body"><span class="kpi-label">Filles</span><span class="kpi-value" id="total-filles">0</span></div>
+            </div>
+          </div>
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-cyan"><i class="fas fa-mars"></i></div>
+              <div class="kpi-body"><span class="kpi-label">Garçons</span><span class="kpi-value" id="total-garcons">0</span></div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-purple"><i class="fas fa-wheelchair"></i></div>
+              <div class="kpi-body"><span class="kpi-label">Élèves avec handicap</span><span class="kpi-value" id="total-handicap">0</span></div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-blue"><i class="fas fa-landmark"></i></div>
+              <div class="kpi-body"><span class="kpi-label">Écoles publiques</span><span class="kpi-value" id="ecoles-publiques">0</span></div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon kpi-cyan"><i class="fas fa-building"></i></div>
+              <div class="kpi-body"><span class="kpi-label">Écoles privées</span><span class="kpi-value" id="ecoles-privees">0</span></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h3><i class="fas fa-chart-line"></i> Évolution des effectifs collectés</h3>
+              <span class="panel-sub">Suivi mensuel des effectifs relevés par vos soins</span>
+            </div>
+            <div class="panel-body chart-wrap large"><canvas id="chart-evolution"></canvas></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head row">
+              <div>
+                <h3><i class="fas fa-school"></i> Mes écoles</h3>
+                <span class="panel-sub">Écoles que vous avez créées et confirmées</span>
+              </div>
+              <button class="btn btn-primary" id="btn-new-ecole"><i class="fas fa-plus"></i> Nouvelle école</button>
+            </div>
+            <div class="table-wrap" id="ecole-summary-container"></div>
+          </div>
+        </section>
+
+        <!-- VIEW: MES ÉCOLES -->
+        <section class="view" id="view-ecoles">
+          <div class="panel">
+            <div class="panel-head row">
+              <div>
+                <h3><i class="fas fa-school"></i> Mes écoles</h3>
+                <span class="panel-sub">Modifiez les classes et effectifs d'une école (la suppression relève du Pool)</span>
+              </div>
+              <button class="btn btn-primary" id="btn-new-ecole-2"><i class="fas fa-plus"></i> Nouvelle école</button>
+            </div>
+            <div class="table-wrap" id="ecole-management-container"></div>
+          </div>
+        </section>
+
+        <!-- VIEW: FORMULAIRE (création / modification d'une école) -->
+        <section class="view" id="view-form">
+          <div class="panel">
+            <div class="panel-head row">
+              <div>
+                <h3 id="wz-title"><i class="fas fa-circle-plus"></i> Nouvelle école</h3>
+                <span class="panel-sub" id="wz-sub">Renseignez l'école, ses classes et ses effectifs</span>
+              </div>
+              <button type="button" class="btn btn-ghost" id="wz-cancel"><i class="fas fa-xmark"></i> Annuler</button>
+            </div>
+
+            <div class="panel-body">
+              <ol class="wz-steps" id="wz-steps">
+                <li data-step="1"><span class="wz-num">1</span><span class="wz-lbl">Type d'école</span></li>
+                <li data-step="2"><span class="wz-num">2</span><span class="wz-lbl">Informations</span></li>
+                <li data-step="3"><span class="wz-num">3</span><span class="wz-lbl">Classes &amp; effectifs</span></li>
+                <li data-step="4"><span class="wz-num">4</span><span class="wz-lbl">Confirmation</span></li>
+              </ol>
+
+              <!-- Étape 1 : type d'école -->
+              <div class="wz-pane" id="wz-pane-1">
+                <h4 class="wz-h">Quel type d'école collectez-vous ?</h4>
+                <p class="hint">La suite du formulaire s'adapte au type choisi.</p>
+                <div class="type-cards" id="type-cards">
+                  <button type="button" class="type-card" data-cycle="maternelle"><i class="fas fa-child"></i><strong>Maternelle</strong><span>1ère à 3ème année</span></button>
+                  <button type="button" class="type-card" data-cycle="primaire"><i class="fas fa-book-open"></i><strong>Primaire</strong><span>1ère à 6ème année</span></button>
+                  <button type="button" class="type-card" data-cycle="secondaire"><i class="fas fa-graduation-cap"></i><strong>Secondaire</strong><span>CTEB, cycle long, cycle court</span></button>
+                </div>
+              </div>
+
+              <!-- Étape 2 : informations -->
+              <div class="wz-pane hidden" id="wz-pane-2">
+                <h4 class="wz-h">Informations sur l'école <span class="wz-badge" id="wz-cycle-badge"></span></h4>
+                <div class="wz-grid">
+                  <div class="form-field">
+                    <label><i class="fas fa-tag"></i> Nom de l'école *</label>
+                    <input type="text" id="ecole-nom" placeholder="Ex: Complexe Scolaire La Grâce" autocomplete="off" />
+                  </div>
+                  <div class="form-field">
+                    <label><i class="fas fa-hashtag"></i> Code de l'école</label>
+                    <input type="text" id="ecole-code" placeholder="Ex: EC-001" autocomplete="off" />
+                  </div>
+                  <div class="form-field">
+                    <label><i class="fas fa-user"></i> Responsable (chef d'établissement)</label>
+                    <input type="text" id="ecole-responsable" placeholder="Nom du responsable" autocomplete="off" />
+                  </div>
+                  <div class="form-field">
+                    <label><i class="fas fa-building"></i> Régime de gestion *</label>
+                    <select id="ecole-categorie">
+                      <option value="">Sélectionner</option>
+                      <option value="publique">Publique</option>
+                      <option value="privee">Privée</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Étape 3 : classes et effectifs -->
+              <div class="wz-pane hidden" id="wz-pane-3">
+                <div class="wz-toolbar">
+                  <h4 class="wz-h" style="margin:0">Classes et effectifs</h4>
+                  <div class="wz-toolbar-actions">
+                    <button type="button" class="btn btn-ghost" id="btn-fill-all"><i class="fas fa-layer-group"></i> Ajouter toutes les classes</button>
+                    <button type="button" class="btn btn-primary" id="btn-add-classe"><i class="fas fa-plus"></i> Ajouter une classe</button>
+                  </div>
+                </div>
+                <div id="classe-rows"></div>
+                <div class="wz-totals" id="wz-totals"></div>
+              </div>
+
+              <!-- Étape 4 : confirmation -->
+              <div class="wz-pane hidden" id="wz-pane-4">
+                <h4 class="wz-h">Vérifiez avant de confirmer</h4>
+                <div id="wz-recap"></div>
+                <div class="wz-warn"><i class="fas fa-circle-info"></i><span>Une fois confirmées, ces informations remontent immédiatement au Pool, à l'IPP et à l'IGE. Vous pourrez les corriger ensuite depuis « Mes écoles ».</span></div>
+              </div>
+
+              <div class="wz-actions">
+                <button type="button" class="btn btn-ghost" id="wz-prev"><i class="fas fa-arrow-left"></i> Précédent</button>
+                <button type="button" class="btn btn-primary" id="wz-next">Suivant <i class="fas fa-arrow-right"></i></button>
+                <button type="button" class="btn btn-primary hidden" id="wz-confirm"><i class="fas fa-check"></i> Confirmer et envoyer</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VIEW: RAPPORTS -->
+        <section class="view" id="view-reports">
+          <div class="panel">
+            <div class="panel-head row">
+              <div>
+                <h3><i class="fas fa-file-lines"></i> Rapports de l'inspecteur</h3>
+                <span class="panel-sub">Statistiques détaillées des écoles que vous avez collectées</span>
+              </div>
+              <button class="btn btn-primary" id="btn-export-pdf"><i class="fas fa-file-pdf"></i> Exporter en PDF</button>
+            </div>
+            <div class="panel-body" id="reports-container">
+              <div class="loading-reports">Chargement des statistiques...</div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- MODAL: Confirmation -->
+  <div class="modal" id="modal-confirm">
+    <div class="modal-card sm">
+      <div class="modal-head">
+        <h3 id="confirm-title"><i class="fas fa-circle-question"></i> Confirmation</h3>
+        <button class="icon-btn" data-close-modal><i class="fas fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-message">Êtes-vous sûr ?</p>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-ghost" data-close-modal>Annuler</button>
+        <button class="btn btn-danger" id="confirm-ok">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden"><i class="fas fa-circle-info"></i><span id="toast-msg"></span></div>
+
+  <!-- OVERLAY MOBILE -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- FIREBASE + JS -->
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="../static/firebase-config.js"></script>
+  <script defer src="../static/dashboard-inspecteur-v2.js"></script>
+  <script defer src="../static/main.js"></script>
+</body>
+</html>
